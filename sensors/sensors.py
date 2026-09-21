@@ -1,10 +1,12 @@
 from flask import Blueprint, jsonify, request
+from authentication.decorators import roles_required
 from . import sensor_repository
 import time as tmodule
 
 sensors = Blueprint("sensors", __name__)
 
 @sensors.route('/allSensors')
+@roles_required("operador")
 def get_all_sensors_endpoint():
     try:
         sensors = sensor_repository.get_all()
@@ -21,6 +23,7 @@ def get_all_sensors_endpoint():
         }), 500
 
 @sensors.route('/newSensor', methods=['POST'])
+@roles_required("operador")
 def new_sensor_endpoint():
     try:
         body = request.get_json()
@@ -47,6 +50,7 @@ def new_sensor_endpoint():
         }), 500
 
 @sensors.route('/repairSensor/<id>', methods=['PATCH'])
+@roles_required("operador")
 def repair_sensor_endpoint(id):
     try:
         tmodule.sleep(30)
@@ -64,6 +68,7 @@ def repair_sensor_endpoint(id):
         }), 500
 
 @sensors.route('/toggleSensor/<id>', methods=['PATCH'])
+@roles_required("operador")
 def toggle_sensor_endpoint(id):
     try:
         description = sensor_repository.toggle_sensor(id)

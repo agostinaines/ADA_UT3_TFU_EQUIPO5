@@ -1,9 +1,9 @@
 from flask import Blueprint, request, jsonify
 import authentication.authentication_repository as authentication_repository
+from flask_jwt_extended import create_access_token
 import bcrypt
 from datetime import datetime, timedelta, timezone
 import os
-import jwt
 
 SECRET_KEY = os.getenv("SECRET_KEY", "faltaSecretKey!")
 
@@ -136,11 +136,12 @@ def login_endpoint():
             'exp': now + timedelta(minutes=120)
         }
 
-        access_token = jwt.encode(
-                            access_payload,
-                            SECRET_KEY,
-                            algorithm='HS256'
-                        )
+        access_token = create_access_token(
+        identity=mail,
+        additional_claims={
+            "rol": rol
+            }
+        )
 
         return jsonify({
             'success': True,

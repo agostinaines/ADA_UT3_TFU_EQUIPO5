@@ -50,14 +50,14 @@ INSERT INTO sensor (activo, version) VALUES
 (TRUE, 1.12);
 
 INSERT INTO usuario VALUES
-('operador@example', 'Operador', 'Operadorson', 'operador');
+('operador@example.com', 'Operador', 'Operadorson', 'operador');
 
 INSERT INTO operador VALUES
-('operador@example');
+('operador@example.com');
 
 -- operadoroperadorson
 INSERT INTO login VALUES
-('operador@example', '$2a$12$i5AMwSlTLmXSsRE2JLgv7.HGOE9ox0MCxQjEC4aoX6cAfTKmxrXAy');
+('operador@example.com', '$2a$12$i5AMwSlTLmXSsRE2JLgv7.HGOE9ox0MCxQjEC4aoX6cAfTKmxrXAy');
 
 DROP USER IF EXISTS 'ada2';
 CREATE USER 'ada2'@'%' IDENTIFIED BY 'reallyStrongPassword123!';
