@@ -6,8 +6,8 @@ class DataBaseConfig:
     DEBUG = True
     MYSQL_HOST = os.getenv("MYSQL_HOST", "localhost")
     MYSQL_DB = os.getenv("MYSQL_DB", "tfu3")
-    MYSQL_USER = os.getenv("MYSQL_USER", "ada2"),
-    MYSQL_PASSWORD = os.getenv("MYSQL_UNKNOWN_PASSWORD", "Unknown19976543!"),
+    MYSQL_USER = os.getenv("MYSQL_USER", "ada2")
+    MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "reallyStrongPassword123!")
 
 config = {
     "development": DataBaseConfig
